@@ -22,6 +22,12 @@ const BarraLateral = ({ mostrarFiltros }: Props) => {
       <div>
         {mostrarFiltros ? (
           <>
+            <S.Campo
+              type="text"
+              placeholder="Procurar"
+              value={termo}
+              onChange={(evento) => dispatch(alterarTermo(evento.target.value))}
+            />
             <S.Filtros>
               <FiltroCard
                 valor={enums.Status.PENDENTE}
@@ -54,12 +60,6 @@ const BarraLateral = ({ mostrarFiltros }: Props) => {
         ) : (
           <Botao onClick={() => navigate('/')}>Voltar a lista de tarefas</Botao>
         )}
-        <Campo
-          type="text"
-          placeholder="Buscar"
-          value={termo}
-          onChange={(evento) => dispatch(alterarTermo(evento.target.value))}
-        />
       </div>
     </S.Aside>
   )
