@@ -1,68 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import FiltroCard from '../../components/FiltroCard'
 
 import * as S from './styles'
-import * as enums from '../../utils/enums/Tarefa'
-import { RootReducer } from '../../store'
-import { alterarTermo } from '../../store/reducers/filtro'
-import { Botao, Campo } from '../../styles'
 
-type Props = {
-  mostrarFiltros: boolean
-}
-
-const BarraLateral = ({ mostrarFiltros }: Props) => {
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const { termo } = useSelector((state: RootReducer) => state.filtro)
-
-  return (
-    <S.Aside>
-      <div>
-        {mostrarFiltros ? (
-          <>
-            <S.Campo
-              type="text"
-              placeholder="Procurar"
-              value={termo}
-              onChange={(evento) => dispatch(alterarTermo(evento.target.value))}
-            />
-            <S.Filtros>
-              <FiltroCard
-                valor={enums.Status.PENDENTE}
-                criterio="status"
-                legenda="pendentes"
-              />
-              <FiltroCard
-                valor={enums.Status.CONCLUIDA}
-                criterio="status"
-                legenda="concluidas"
-              />
-              <FiltroCard
-                valor={enums.Prioridade.URGENTE}
-                criterio="prioridade"
-                legenda="urgentes"
-              />
-              <FiltroCard
-                valor={enums.Prioridade.IMPORTANTE}
-                criterio="prioridade"
-                legenda="importantes"
-              />
-              <FiltroCard
-                valor={enums.Prioridade.NORMAL}
-                criterio="prioridade"
-                legenda="normal"
-              />
-              <FiltroCard criterio="todas" legenda="todas" />
-            </S.Filtros>
-          </>
-        ) : (
-          <Botao onClick={() => navigate('/')}>Voltar a lista de tarefas</Botao>
-        )}
-      </div>
-    </S.Aside>
-  )
-}
+const BarraLateral = () => (
+  <S.Aside>
+    <div>
+      <S.Campo type="text" placeholder="Buscar Contato" />
+      <S.Filtros>
+        <FiltroCard apelido="Chico" contador={1} />
+        <FiltroCard apelido="Merlot" contador={2} />
+        <FiltroCard apelido="Peido" contador={3} />
+      </S.Filtros>
+    </div>
+  </S.Aside>
+)
 
 export default BarraLateral
