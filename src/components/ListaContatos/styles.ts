@@ -1,4 +1,23 @@
 import styled from 'styled-components'
+import variaveis from '../../styles/variaveis'
+
+import * as enums from '../../utils/enums/Contato'
+
+type TagProps = {
+  categoria?: enums.Categoria
+  status?: enums.Status
+}
+
+function retornaCorDeFundo(props: TagProps): string {
+  if ('categoria' in props) {
+    if (props.categoria === enums.Categoria.AMIGO) return variaveis.salmao
+    if (props.categoria === enums.Categoria.OUTROS) return variaveis.amarelo
+  } else if ('status' in props) {
+    if (props.status === enums.Status.TRABALHO) return variaveis.azulEscuro
+    if (props.status === enums.Status.SERVICOS) return variaveis.indigo
+  }
+  return '#f1f1'
+}
 
 export const Card = styled.div`
   background-color: #fcfcfc;
@@ -13,12 +32,12 @@ export const Nome = styled.h3`
   font-weight: bold;
   margin-bottom: 16px;
 `
-export const Tag = styled.span`
+export const Tag = styled.span<TagProps>`
   padding: 4px 8px;
   font-size: 10px;
   font-weight: bold;
   color: #fff;
-  background-color: #e9967a;
+  background-color: ${(props) => retornaCorDeFundo(props)}
   border-radius: 8px;
   margin-right: 16px;
   display: inline-block;
@@ -63,4 +82,10 @@ export const Botao = styled.button`
   cursor: pointer;
   background-color: #2f3640;
   margin-right: 8px;
+`
+export const BotaoSalvar = styled(Botao)`
+  background-color: ${variaveis.verde};
+`
+export const BotaoCancelarRemover = styled(Botao)`
+  background-color: ${variaveis.vermelho};
 `

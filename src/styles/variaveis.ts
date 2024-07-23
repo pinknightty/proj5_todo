@@ -1,7 +1,9 @@
 export default {
-  vermelho: '#C23616',
-  verde: '#44BD32',
-  amarelo: '#F0C11A',
-  amarelo2: '#E1A32A',
-  azulEscuro: '#2f3640'
+  vermelho: '#c23616',
+  verde: '#44bd32',
+  salmao: '#e9967a',
+  amarelo: '#e1a32a',
+  azulEscuro: '#2f3640',
+  indigo: '#4b0082',
+  coral: '#f08080'
 }
