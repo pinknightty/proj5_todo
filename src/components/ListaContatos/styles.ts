@@ -2,21 +2,30 @@ import styled from 'styled-components'
 import variaveis from '../../styles/variaveis'
 
 import * as enums from '../../utils/enums/Contato'
+import { Botao } from '../../styles'
 
 type TagProps = {
-  categoria?: enums.Categoria
-  status?: enums.Status
+  relacionamento?: enums.Relacionamento
+  parametro: 'relacionamento' | 'status'
 }
 
 function retornaCorDeFundo(props: TagProps): string {
-  if ('categoria' in props) {
-    if (props.categoria === enums.Categoria.AMIGO) return variaveis.salmao
-    if (props.categoria === enums.Categoria.OUTROS) return variaveis.amarelo
-  } else if ('status' in props) {
-    if (props.status === enums.Status.TRABALHO) return variaveis.azulEscuro
-    if (props.status === enums.Status.SERVICOS) return variaveis.indigo
+  if (props.parametro === 'relacionamento') {
+    if (props.relacionamento === enums.Relacionamento.TRABALHO)
+      return variaveis.azulEscuro
+    if (props.relacionamento === enums.Relacionamento.AMIZADE)
+      return variaveis.salmao
+    if (props.relacionamento === enums.Relacionamento.CONHECIDO)
+      return variaveis.vermelho
+    if (props.relacionamento === enums.Relacionamento.NAMORADX)
+      return variaveis.verde
+    if (props.relacionamento === enums.Relacionamento.SERVICOS)
+      return variaveis.coral
+    if (props.relacionamento === enums.Relacionamento.OUTROS)
+      return variaveis.purpura
   }
-  return '#f1f1'
+
+  return variaveis.turquesa
 }
 
 export const Card = styled.div`
@@ -25,18 +34,24 @@ export const Card = styled.div`
   padding: 16px;
   margin-bottom: 32px;
   border-radius: 16px;
+
+  label {
+    display: flex;
+    align-itens: center;
+    margin-bottom: 16px;
+  }
 `
 
 export const Nome = styled.h3`
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-left: 8px;
 `
 export const Tag = styled.span<TagProps>`
   padding: 4px 8px;
   font-size: 10px;
   font-weight: bold;
-  color: #fff;
+  color: #ccc;
   background-color: ${(props) => retornaCorDeFundo(props)}
   border-radius: 8px;
   margin-right: 16px;
@@ -72,20 +87,6 @@ export const BarraAcoes = styled.div`
   padding-top: 16px;
 `
 
-export const Botao = styled.button`
-  font-weight: bold;
-  font-size: 12px;
-  color: #fff;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: #2f3640;
-  margin-right: 8px;
-`
-export const BotaoSalvar = styled(Botao)`
-  background-color: ${variaveis.verde};
-`
 export const BotaoCancelarRemover = styled(Botao)`
   background-color: ${variaveis.vermelho};
 `

@@ -1,9 +1,13 @@
-export enum Categoria {
-  AMIGO = 'Amigo',
-  OUTROS = 'Outros'
+export enum Relacionamento {
+  AMIZADE = 'Amigo',
+  CONHECIDO = 'Conhecido',
+  NAMORADX = 'Namorada(o)',
+  TRABALHO = 'Trabalho',
+  SERVICOS = 'Prestador (a) de Serviço',
+  OUTROS = 'Etc'
 }
 
 export enum Status {
-  TRABALHO = 'Trabalho',
-  SERVICOS = 'Serviços'
+  VIVO = 'Vivo',
+  MORTO = 'Morto'
 }
